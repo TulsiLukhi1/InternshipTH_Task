@@ -3,12 +3,8 @@ const plusI =(x,i)=>{
     return x+i;
 }
 
-
 var map = function(arr, fn) {
-    var transformedArr=[]
-    for(let i=0;i<arr.length;i++){
-        transformedArr.push(fn(arr[i],i));
-    }
+    var transformedArr=arr.map(fn)
     return transformedArr;
 };
 
