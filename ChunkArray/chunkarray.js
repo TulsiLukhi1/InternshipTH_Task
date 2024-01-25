@@ -1,6 +1,10 @@
 var chunk = function (arr, size) {
   let start = 0;
   let ans = [];
+
+  if(size == 0){
+    return arr;
+  }
   for (let i = 0; i < Math.ceil(arr.length / size); i++) {
     if (start + size > arr.length) {
       ans = [...ans, arr.slice(start, arr.length)];
