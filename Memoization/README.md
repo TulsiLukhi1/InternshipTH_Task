@@ -36,7 +36,7 @@ memoizedSum(1, 2); // "call" - returns 3. sum() was called as (1, 2) was not see
 
 This project contains the following files related to the task:
 
-- `chunkarray.js`: JavaScript file containing the implementation of the function composition.
+- `memoization.js`: JavaScript file containing the implementation of the function composition.
 
 
 ## How to Run
@@ -45,7 +45,7 @@ To test the function composition, follow these steps:
 
 1. Clone the repository.
 2. Open a terminal and navigate to the project directory.
-3. Run the command: `node chunkarray.js`
+3. Run the command: `node memoization.js`
 
 This will execute the one test case and display the results.
 
