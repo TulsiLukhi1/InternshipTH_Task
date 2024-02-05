@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { SketchPicker } from "react-color";
 import "./style.css";
-import { getRandomColor } from "../Helpers/Helpers";
+import { getInitialRandomColor } from "../Helpers";
+import GridItem from "./GridItem";
 
-const INITIAL_COLORS = getRandomColor(5);
+const INITIAL_COLORS = getInitialRandomColor(5);
+
 const ColorfulGrid = () => {
   const [color, setColor] = useState("#ffffff");
   const [colors, setColors] = useState(INITIAL_COLORS);
@@ -11,7 +13,7 @@ const ColorfulGrid = () => {
   const [columns, setColumns] = useState(3);
 
   // handlers
-  function onDelete(index) {
+  const onDelete = (index) => {
     setColors((prev) => {
       let remainColors = [];
       remainColors = prev.filter((c, i) => i !== index);
@@ -19,30 +21,34 @@ const ColorfulGrid = () => {
     });
   }
 
-  function colorChanhgeHandler(index, newColor) {
-    setColors((prev) => {
-      let upadtedColors = [];
-      upadtedColors = upadtedColors.concat(prev);
-      upadtedColors[index] = newColor;
-      return upadtedColors;
+
+  const colorChangeHandler = (index, newColor) => {
+    setColors((prevColors) => {
+      let updatedColors = [...prevColors];
+      updatedColors[index] = newColor;
+      return updatedColors;
     });
   }
-  //
+
+
+  const getRandomColor  = ()=>{
+    const numberOfColors = colors.length;
+    const randomNumber = Math.floor(Math.random() * numberOfColors);
+    const randomColor = colors[randomNumber];
+    return randomColor;
+  }
+
+  //Dynamic Grid
   const renderGrid = () => {
     const grid = [];
-    const numberOfColors = colors.length;
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < columns; j++) {
-        const randomNumber = Math.floor(Math.random() * numberOfColors);
-        const randomColor = colors[randomNumber];
+        const randomColor = getRandomColor();
         grid.push(
-          <div
-            key={`${i}-${j}`}
-            className="grid-item"
-            style={{ backgroundColor: randomColor }}
-          >
-            
-          </div>
+          <GridItem
+          key={`${i}-${j}`}
+          backgroundColor={randomColor}
+        />
         );
       }
     }
@@ -52,12 +58,12 @@ const ColorfulGrid = () => {
   const handleColorChange = (newColor) => {
     setColor(newColor.hex);
   };
-  
+
   return (
     <div className="container">
-      <div className="side-panel">
+      <section className="side-panel">
         {/* color picker */}
-        <div>
+        <article>
           <div className="input-label-color cus-style">
             <label htmlFor="colorInput">Choose Color</label>
           </div>
@@ -74,7 +80,7 @@ const ColorfulGrid = () => {
           >
             Add
           </button>
-        </div>
+        </article>
 
         {/* row input */}
         <div className="flex-1">
@@ -112,16 +118,15 @@ const ColorfulGrid = () => {
         </div>
 
         {/* color wrapper */}
-        <div className="colors-wrapper">
+        <section className="colors-wrapper">
           {colors.map((color, index) => {
             return (
               <div className="color-picker-div" key={index}>
                 <input
-                  
                   type="color"
                   value={color}
-                  onChange={(e) => colorChanhgeHandler(index, e.target.value)}
-                />{" "}
+                  onChange={(e) =>colorChangeHandler(index, e.target.value)}
+                />
                 {colors.length > 1 && (
                   <button
                     className="delete-btn"
@@ -133,12 +138,12 @@ const ColorfulGrid = () => {
               </div>
             );
           })}
-        </div>
+        </section>
+      </section>
 
-      
-      </div>
 
-      <div
+        {/* Dynamic Grid */}
+      <main
         className="grid-container"
         style={{
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
@@ -146,7 +151,7 @@ const ColorfulGrid = () => {
         }}
       >
         {renderGrid()}
-      </div>
+      </main>
     </div>
   );
 };

@@ -1,80 +1,78 @@
 .side-panel {
-    background-color:#f3d7ca;
-    width: 280px;
-    height: 100vh;
-    padding: 18px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    align-items: center;
-    position: sticky;
-    top: 0%;
+  background-color: #f3d7ca;
+  width: 280px;
+  height: 100vh;
+  padding: 18px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  position: sticky;
+  top: 0%;
 }
 
-.cus-style{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 2em;
-    font-weight: 600;
-    font-size: 16px;
-    margin-left: 10px;
-    margin-right: 10px;
+.cus-style {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2em;
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.input-label-color{
-    width: 13.8em;
-    height: 2.2em;
-    background-color: #fff8e3;
-    margin-top: 1em;
+.input-label-color {
+  width: 13.8em;
+  height: 2.2em;
+  background-color: #fff8e3;
+  margin-top: 1em;
 }
-.input-label{
-    width: 30px;
-    background-color: #fff8e3;
-    height: 2.2em;
-    width: 2.2em;
-    border-radius: 30px;
-    padding: 8px;
-    margin-top: 20px;
-}
-
-.flex-1{
-    display: flex;
-    flex-direction: row;
-    flex: 1;
+.input-label {
+  width: 30px;
+  background-color: #fff8e3;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 30px;
+  padding: 8px;
+  margin-top: 20px;
 }
 
-
-.colorpicker{
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
+.flex-1 {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
 }
 
-.cus-btn{
-    width: 13.8em;
-    height: 2.2em;
-    background-color: black;
-    color: white;
-    margin-top: 20px;
-    font-weight: 400;
+.colorpicker {
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.cus-btn:hover{
-    background-color: #d0aa97;
-    color: black;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
+.cus-btn {
+  width: 13.8em;
+  height: 2.2em;
+  background-color: black;
+  color: white;
+  margin-top: 20px;
+  font-weight: 400;
 }
 
+.cus-btn:hover {
+  background-color: #d0aa97;
+  color: black;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
 
-.cus-input{
-    width: 13em;
-    height: 2.5em;
-    background-color: #fff8e3;
-    border-radius: 30px;
-    margin-top: 20px;
-    padding: 10px;
+.cus-input {
+  width: 13em;
+  height: 2.5em;
+  background-color: #fff8e3;
+  border-radius: 30px;
+  margin-top: 20px;
+  padding: 10px;
 }
 
 .container {
@@ -98,56 +96,55 @@
   color: rgb(47, 47, 47);
 }
 
-
-.grid-container{
-    display: grid;
-    padding: 10px;
-    min-height: 100vh;
-    width: 100%;
-    overflow: auto;
+.grid-container {
+  display: grid;
+  padding: 10px;
+  min-height: 100vh;
+  width: 100%;
+  overflow: auto;
 }
 
-.grid-item{
-    padding: 20px;   
+.grid-item {
+  padding: 20px;
 }
 
-.delete-btn{
-    border: none;
-    outline: none;
-    height: 1.5rem;
-    width: 1.5rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(255, 0, 30, 0.633);
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
+.delete-btn {
+  border: none;
+  outline: none;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 0, 30, 0.633);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-.color-picker-div{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .5rem;
-    background: rgba(192, 192, 192, 0.723);
-    border-radius: .5rem;
-    width: fit-content;
-    column-gap: .5rem;
+.color-picker-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: rgba(192, 192, 192, 0.723);
+  border-radius: 0.5rem;
+  width: fit-content;
+  column-gap: 0.5rem;
 }
 
-.color-picker-div input{
-    border: none;
-    outline: none;
+.color-picker-div input {
+  border: none;
+  outline: none;
 }
 
-.colors-wrapper{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: .5rem;
-    margin-block: 1rem;
-    overflow: auto;
-    height: 8rem;
+.colors-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block: 1rem;
+  overflow: auto;
+  height: 8rem;
 }
