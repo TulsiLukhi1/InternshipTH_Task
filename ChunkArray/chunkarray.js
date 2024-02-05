@@ -6,12 +6,11 @@ var chunk = function (arr, size) {
     return arr;
   }
   for (let i = 0; i < Math.ceil(arr.length / size); i++) {
-    
-    start + size > arr.length
-      ? (ans = [...ans, arr.slice(start, arr.length)])
-      : (ans = [...ans, arr.slice(start, size + start)]);
+    const sliceEndIndex = start + size > arr.length ? arr.length : size + start;
 
-    start = start + size;
+    ans = [...ans, arr.slice(start, sliceEndIndex)];
+
+    start += size;
   }
   return ans;
 };
