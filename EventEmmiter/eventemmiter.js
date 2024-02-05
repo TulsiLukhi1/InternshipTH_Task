@@ -11,11 +11,12 @@ class EventEmitter {
       throw new Error("Listener must be a function!");
     }
 
-    //check if event present or not if not
-    //create new event and initialize with empty array
-
-    this.events[eventName] = this.events[eventName] || [];
-    // console.log(eventName);
+   
+    // Check if event present or not
+    if (Object.keys(this.events).indexOf(eventName) === -1) {
+      // Create new event and initialize with empty array
+      this.events[eventName] = [];
+    }
 
     //now push list callback(listener) to that particular event array
     this.events[eventName].push(callback);
@@ -25,27 +26,32 @@ class EventEmitter {
         //get the index of event from particular event array
         const index = this.events[eventName].indexOf(callback);
         this.events[eventName].splice(index, 1);
-        return undefined;
       },
     };
   }
 
-  emit(eventName, args = []) {
-    console.log("args", args);
-    console.log(typeof args);
+  async emit(eventName, args = []) {
     var result = [];
-    //first check that eventName exists in events
-    if (this.events[eventName]) {
-      //if it exists we interate array and in sequentially execute listeners
-      this.events[eventName].forEach((listener) => {
-        const value = listener(...args);
 
-        result.push(value);
-      });
+    // First check that eventName exists in events
+    if (this.events[eventName]) {
+        // If it exists, iterate over the array and sequentially execute listeners
+        for (const listener of this.events[eventName]) {
+            // Check if the listener is asynchronous (returns a promise)
+            if (listener.constructor.name === 'AsyncFunction' || listener instanceof Promise) {
+                const value = await listener(...args);
+                result.push(value);
+            } else {
+                const value = listener(...args);
+                result.push(value);
+            }
+        }
     }
 
     return result;
-  }
+}
+
+ 
 }
 
 const emitter = new EventEmitter();
