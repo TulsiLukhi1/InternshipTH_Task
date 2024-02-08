@@ -11,7 +11,6 @@ class EventEmitter {
       throw new Error("Listener must be a function!");
     }
 
-   
     // Check if event present or not
     if (Object.keys(this.events).indexOf(eventName) === -1) {
       // Create new event and initialize with empty array
@@ -35,23 +34,16 @@ class EventEmitter {
 
     // First check that eventName exists in events
     if (this.events[eventName]) {
-        // If it exists, iterate over the array and sequentially execute listeners
-        for (const listener of this.events[eventName]) {
-            // Check if the listener is asynchronous (returns a promise)
-            if (listener.constructor.name === 'AsyncFunction' || listener instanceof Promise) {
-                const value = await listener(...args);
-                result.push(value);
-            } else {
-                const value = listener(...args);
-                result.push(value);
-            }
-        }
+      // If it exists, iterate over the array and sequentially execute listeners
+      for (const listener of this.events[eventName]) {
+        // Check if the listener is asynchronous (returns a promise)
+        const value = await listener(...args);
+        result.push(value);
+      }
     }
 
     return result;
-}
-
- 
+  }
 }
 
 const emitter = new EventEmitter();
