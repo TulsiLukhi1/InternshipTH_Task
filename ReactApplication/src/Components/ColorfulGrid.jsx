@@ -19,24 +19,22 @@ const ColorfulGrid = () => {
       remainColors = prev.filter((c, i) => i !== index);
       return remainColors;
     });
-  }
-
+  };
 
   const colorChangeHandler = (index, newColor) => {
     setColors((prevColors) => {
-      let updatedColors = [...prevColors];
+      const updatedColors = [...prevColors];
       updatedColors[index] = newColor;
       return updatedColors;
     });
-  }
+  };
 
-
-  const getRandomColor  = ()=>{
+  const getRandomColor = () => {
     const numberOfColors = colors.length;
     const randomNumber = Math.floor(Math.random() * numberOfColors);
     const randomColor = colors[randomNumber];
     return randomColor;
-  }
+  };
 
   //Dynamic Grid
   const renderGrid = () => {
@@ -44,12 +42,7 @@ const ColorfulGrid = () => {
     for (let i = 0; i < rows; i++) {
       for (let j = 0; j < columns; j++) {
         const randomColor = getRandomColor();
-        grid.push(
-          <GridItem
-          key={`${i}-${j}`}
-          backgroundColor={randomColor}
-        />
-        );
+        grid.push(<GridItem key={`${i}-${j}`} backgroundColor={randomColor} />);
       }
     }
     return grid;
@@ -125,7 +118,7 @@ const ColorfulGrid = () => {
                 <input
                   type="color"
                   value={color}
-                  onChange={(e) =>colorChangeHandler(index, e.target.value)}
+                  onChange={(e) => colorChangeHandler(index, e.target.value)}
                 />
                 {colors.length > 1 && (
                   <button
@@ -141,8 +134,7 @@ const ColorfulGrid = () => {
         </section>
       </section>
 
-
-        {/* Dynamic Grid */}
+      {/* Dynamic Grid */}
       <main
         className="grid-container"
         style={{
